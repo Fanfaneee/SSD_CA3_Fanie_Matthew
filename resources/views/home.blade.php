@@ -20,3 +20,17 @@
 <div class="bg-custom-yellow">
     <h1>Yellow</h1>
 </div>
+
+<div class="mt-4">
+    <a href="{{ route('festivals') }}" class="text-blue-500 underline">Go to Festivals Page</a>
+</div>
+<div class="mt-4">
+    <a href="{{ route('map') }}" class="text-blue-500 underline">Go to map Page</a>
+</div>
+<div class="mt-4">
+    <a href="{{ route('calendar') }}" class="text-blue-500 underline">Go to calendar Page</a>
+</div>
+<div class="mt-4">
+    <a href="{{ route('contact') }}" class="text-blue-500 underline">Go to contact Page</a>
+</div>
+@endsection
