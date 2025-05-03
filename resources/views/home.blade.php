@@ -27,7 +27,7 @@
 </div>
 
 <div class="mt-4">
-    <a href="{{ route('festivals') }}" class="text-blue-500 underline">Go to Festivals Page</a>
+    <a href="{{ route('festivals.index') }}" class="text-blue-500 underline">Go to Festivals Page</a>
 </div>
 <div class="mt-4">
     <a href="{{ route('map') }}" class="text-blue-500 underline">Go to map Page</a>

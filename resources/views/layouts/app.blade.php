@@ -17,9 +17,9 @@
             style="{{ request()->routeIs('home') ? 'background-image: url(' . asset('images/image_crop.png') . '); height: 100vh;' : 'height: 128px;' }}">
       <nav class="absolute top-0 left-0 right-0 flex items-center justify-between p-4">
         <!-- Left side: Navigation links -->
-        <div class="flex  pl-40 space-x-40 flex-1 justify-start">
+        <div class="flex  pl-40 space-x-40 flex-1 justify-start font-custom-rubik">
           <a href="{{ route('home') }}" class="text-white font-bold hover:text-gray-300">Home</a>
-          <a href="{{ route('festivals') }}" class="text-white font-bold hover:text-gray-300">Festivals</a>
+          <a href="{{ route('festivals.index') }}" class="text-white font-bold hover:text-gray-300">Festivals</a>
           <a href="{{ route('map') }}" class="text-white font-bold hover:text-gray-300">Map</a>
         </div>
 
@@ -29,7 +29,7 @@
         </div>
 
         <!-- Right side: Navigation links -->
-        <div class="flex space-x-40 pr-40 flex-1 justify-end">
+        <div class="flex space-x-40 pr-40 flex-1 justify-end font-custom-rubik">
           <a href="{{ route('calendar') }}" class="text-white font-bold hover:text-gray-300">Calendar</a>
           <a href="{{ route('contact') }}" class="text-white font-bold hover:text-gray-300">Contact</a>
           <a href="{{ route('contact') }}" class="text-white font-bold hover:text-gray-300">Register/Login</a>
