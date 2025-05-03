@@ -2,10 +2,10 @@
 
 @section('content')
 
-<div class="bg-blue-200" >
+<div class="bg-blue-200">
     Welcomeee
 </div>
-<div  style="background-color: #3A86FF;">
+<div style="background-color: #3A86FF;">
     <h1>Blue</h1>
 </div>
 <div class="bg-custom-purple">
@@ -21,6 +21,11 @@
     <h1>Yellow</h1>
 </div>
 
+<!-- Add the image -->
+<div class="mt-4">
+    <img src="{{ asset('images/image_crop.jpg') }}" alt="Image Crop" class="w-full h-auto">
+</div>
+
 <div class="mt-4">
     <a href="{{ route('festivals') }}" class="text-blue-500 underline">Go to Festivals Page</a>
 </div>
@@ -32,5 +37,8 @@
 </div>
 <div class="mt-4">
     <a href="{{ route('contact') }}" class="text-blue-500 underline">Go to contact Page</a>
+</div>
+<div>
+    <a href="{{ route('home') }}" class="text-blue-500 underline">Go to Home Page</a>
 </div>
 @endsection

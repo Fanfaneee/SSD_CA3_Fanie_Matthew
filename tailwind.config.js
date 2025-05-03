@@ -13,7 +13,20 @@ module.exports = {
         'custom-pink': '#FF006E',
         'custom-orange': '#FB5607',
         'custom-yellow': '#FFBE0B',
+        'custom-background': '#17181C',
       },
+      fontFamily: {
+        'custom-rubik': ['Rubik', 'sans-serif'],
+      },
+      animation: {
+        spin: 'spin 5s linear infinite', // Animation de rotation
+      },
+      keyframes: {
+        spin: {
+          '0%': { transform: 'rotate(0deg)' },
+          '100%': { transform: 'rotate(360deg)' },
+        },
+      }
     },
   },
   plugins: [],
