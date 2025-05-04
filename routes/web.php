@@ -13,6 +13,7 @@ use App\Http\Controllers\FavoriteController;
 use App\Http\Controllers\AccountController;
 
 Route::get('/', [PageController::class, 'home'])->name('home');
+Route::get('/festivals/create', [FestivalController::class, 'create'])->name('festivals.create');
 
 
 Route::get('/map', [PageController::class, 'map'])->name('map');
@@ -23,7 +24,6 @@ Route::get('/festivals', [FestivalController::class, 'index'])->name('festivals.
 Route::get('/festivals/{id}', [FestivalController::class, 'show'])->name('festivals.show');
 Route::middleware(['auth', 'admin'])->group(function () {
     // Add Festival
-    Route::get('/festivals/create', [FestivalController::class, 'create'])->name('festivals.create');
     Route::post('/festivals', [FestivalController::class, 'store'])->name('festivals.store');
 
     // Edit Festival
