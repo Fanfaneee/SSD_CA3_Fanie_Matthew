@@ -25,31 +25,36 @@ class FestivalController extends Controller
 
     // Traiter la soumission du formulaire
     public function store(Request $request)
-    {
-        // Valider les données
-        $validated = $request->validate([
-            'name' => 'required|string|max:255',
-            'image' => 'nullable|image|mimes:jpeg,png,jpg,gif|max:2048', // Validation pour l'image
-            'location' => 'required|string|max:255',
-            'genre' => 'required|string|max:255',
-            'lineup' => 'required|string',
-            'price' => 'nullable|numeric|min:0',
-            'start_date' => 'required|date',
-            'end_date' => 'required|date|after_or_equal:start_date',
-        ]);
-        // Gérer l'upload de l'image
-        if ($request->hasFile('image')) {
-            $validated['image'] = $request->file('image')->store('images', 'public');
-        }
-        // Créer le festival
-        Festival::create($validated);
+{
+    // Validation des données
+    $validated = $request->validate([
+        'name' => 'required|string|max:255',
+        'image' => 'nullable|image|mimes:jpeg,png,jpg,gif|max:2048',
+        'location' => 'required|string|max:255',
+        'latitude' => 'required|numeric',
+        'longitude' => 'required|numeric',
+        'genre' => 'required|string|max:255',
+        'lineup' => 'required|string',
+        'price' => 'nullable|numeric|min:0',
+        'start_date' => 'required|date',
+        'end_date' => 'required|date|after_or_equal:start_date',
+    ]);
 
-        // Rediriger avec un message de succès
-        return redirect()->route('festivals.index')->with('success', 'Festival added successfully!');
+    // Gestion de l'image (si présente)
+    if ($request->hasFile('image')) {
+        $validated['image'] = $request->file('image')->store('images', 'public');
     }
 
+    // Création du festival
+    Festival::create($validated);
+
+    // Redirection après la création
+    return redirect()->route('festivals.index')->with('success', 'Festival created successfully!');
+}
     public function create()
     {
         return view('festivals.create');
     } 
+
+    
 }

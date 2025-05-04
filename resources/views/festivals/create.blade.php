@@ -36,6 +36,22 @@
         </div>
 
         <div>
+            <label for="latitude" class="block font-bold text-white">Latitude</label>
+            <input type="text" name="latitude" id="latitude" class="w-full border p-2" value="{{ old('latitude') }}" required>
+            @error('latitude')
+                <p class="text-red-500 text-sm">{{ $message }}</p>
+            @enderror
+        </div>
+
+        <div>
+            <label for="longitude" class="block font-bold text-white">Longitude</label>
+            <input type="text" name="longitude" id="longitude" class="w-full border p-2" value="{{ old('longitude') }}" required>
+            @error('longitude')
+                <p class="text-red-500 text-sm">{{ $message }}</p>
+            @enderror
+        </div>
+
+        <div>
             <label for="genre" class="block font-bold text-white">Genre</label>
             <input type="text" name="genre" id="genre" class="w-full border p-2" value="{{ old('genre') }}" required>
             @error('genre')
