@@ -1,6 +1,7 @@
 <?php
 
 namespace App\Http\Controllers;
+use App\Models\Festival;
 
 use Illuminate\Http\Request;
 
@@ -18,9 +19,10 @@ class PageController extends Controller
     }
 
     public function map()
-    {
-        return view('map');
-    }
+{
+    $festivals = Festival::select('name', 'location', 'latitude', 'longitude', 'genre', 'lineup', 'price', 'start_date', 'end_date')->get();
+    return view('map', compact('festivals'));
+}
     public function calendar()
     {
         return view('calendar');
@@ -30,9 +32,7 @@ class PageController extends Controller
         return view('contact');
     }
 
+    
 
-    public function create()
-    {
-        return view('festivals.create');
-    } 
+
 }

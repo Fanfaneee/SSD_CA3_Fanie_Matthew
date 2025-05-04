@@ -14,6 +14,8 @@ class Festival extends Model
         'name',
         'image',
         'location',
+        'latitude',
+        'longitude',
         'genre',
         'lineup',
         'price',
