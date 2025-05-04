@@ -18,7 +18,9 @@ class FestivalController extends Controller
     public function show($id)
     {
         $festival = Festival::findOrFail($id);
-        return view('festivals.show', compact('festival'));
+        $comments = $festival->comments()->with('user')->latest()->get(); // Fetch comments with user info
+        return view('festivals.show', compact('festival', 'comments'));
+
     }
 
 
