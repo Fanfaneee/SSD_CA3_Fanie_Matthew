@@ -26,22 +26,27 @@
                     <p class="text-gray-300">{{ $festival->location }}</p>
                     <p class="text-gray-300">{{ $festival->genre }}</p>
                     <a href="{{ route('festivals.show', $festival->id) }}" class="text-blue-400 underline hover:text-blue-600">View Details</a>
-                    @if (auth()->check() && auth()->user()->is_admin)
-                    <!-- Edit Button -->
-                    <a href="{{ route('festivals.edit', $festival->id) }}" class="bg-yellow-500 text-white px-4 py-2 rounded hover:bg-yellow-600 mt-2 inline-block">
-                        Edit
-                    </a>
     
-                    <!-- Delete Button -->
-                    <form action="{{ route('festivals.destroy', $festival->id) }}" method="POST" class="inline-block" onsubmit="return confirm('Are you sure you want to delete this festival?');">
-                        @csrf
-                        @method('DELETE')
-                        <button type="submit" class="bg-red-500 text-white px-4 py-2 rounded hover:bg-red-600 mt-2">
-                            Delete
-                        </button>
-                    </form>
+                    @if (auth()->check())
+                        @if (auth()->user()->favoriteFestivals->contains($festival->id))
+                            <!-- Remove from Favorites -->
+                            <form action="{{ route('favorites.destroy', $festival->id) }}" method="POST" class="inline-block">
+                                @csrf
+                                @method('DELETE')
+                                <button type="submit" class="bg-red-500 text-white px-4 py-2 rounded hover:bg-red-600 mt-2">
+                                    Remove from Favorites
+                                </button>
+                            </form>
+                        @else
+                            <!-- Add to Favorites -->
+                            <form action="{{ route('favorites.store', $festival->id) }}" method="POST" class="inline-block">
+                                @csrf
+                                <button type="submit" class="bg-green-500 text-white px-4 py-2 rounded hover:bg-green-600 mt-2">
+                                    Add to Favorites
+                                </button>
+                            </form>
+                        @endif
                     @endif
-                    
                 </div>
             </div>
         @endforeach

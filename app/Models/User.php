@@ -43,4 +43,9 @@ class User extends Authenticatable
         'email_verified_at' => 'datetime',
         'password' => 'hashed',
     ];
+
+    public function favoriteFestivals()
+{
+    return $this->belongsToMany(Festival::class, 'favorites')->withTimestamps();
+}
 }
