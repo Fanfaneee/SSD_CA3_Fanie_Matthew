@@ -32,7 +32,19 @@
         <div class="flex space-x-40 pr-40 flex-1 justify-end font-custom-rubik">
           <a href="{{ route('calendar') }}" class="text-white font-bold hover:text-gray-300">Calendar</a>
           <a href="{{ route('contact') }}" class="text-white font-bold hover:text-gray-300">Contact</a>
-          <a href="{{ route('contact') }}" class="text-white font-bold hover:text-gray-300">Register/Login</a>
+          @guest
+              <!-- Show Login/Register button for guests -->
+              <a href="{{ route('login') }}" class="text-white font-bold hover:text-gray-300">Login / Register</a>
+          @else
+              <!-- Show Logout button for authenticated users -->
+              <a href="#" class="text-white font-bold hover:text-gray-300"
+                 onclick="event.preventDefault(); document.getElementById('logout-form').submit();">
+                 Logout
+              </a>
+              <form id="logout-form" action="{{ route('logout') }}" method="POST" class="hidden">
+                  @csrf
+              </form>
+          @endguest
         </div>
       </nav>
     </header>
