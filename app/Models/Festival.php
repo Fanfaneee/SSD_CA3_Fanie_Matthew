@@ -35,6 +35,11 @@ class Festival extends Model
     return $this->hasMany(Comment::class);
 }
 
+public function favoriteFestivals()
+{
+    return $this->belongsToMany(Festival::class, 'favorites')->withTimestamps();
+}
+
 }
 
 

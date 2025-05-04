@@ -9,6 +9,8 @@ use App\Http\Controllers\CommentController; // For non-admin comments
 use App\Http\Controllers\Admin\UserController;
 use App\Http\Controllers\Admin\CommentController as AdminCommentController; // Alias for admin comments
 use App\Http\Controllers\ContactController;
+use App\Http\Controllers\FavoriteController;
+use App\Http\Controllers\AccountController;
 
 Route::get('/', [PageController::class, 'home'])->name('home');
 
@@ -61,3 +63,19 @@ Route::middleware(['auth', 'admin'])->prefix('admin')->name('admin.')->group(fun
 
 Route::post('/contact', [ContactController::class, 'store'])->name('contact.store');
 Route::delete('/admin/contacts/{contact}', [AdminController::class, 'destroyContact'])->name('admin.contacts.destroy');
+
+Route::middleware(['auth'])->group(function () {
+    Route::post('/favorites/{festival}', [FavoriteController::class, 'store'])->name('favorites.store');
+    Route::delete('/favorites/{festival}', [FavoriteController::class, 'destroy'])->name('favorites.destroy');
+    Route::get('/favorites', [FavoriteController::class, 'index'])->name('favorites.index');
+});
+
+Route::middleware(['auth'])->group(function () {
+    Route::get('/favorites', [FavoriteController::class, 'index'])->name('favorites.index');
+    Route::get('/account/settings', [AccountController::class, 'settings'])->name('account.settings');
+});
+
+Route::middleware(['auth'])->group(function () {
+    Route::get('/account/settings', [AccountController::class, 'settings'])->name('account.settings');
+    Route::post('/account/settings', [AccountController::class, 'update'])->name('account.update');
+});

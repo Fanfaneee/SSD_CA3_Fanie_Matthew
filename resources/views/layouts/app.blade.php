@@ -39,24 +39,35 @@
           @auth
               @if (Auth::user()->is_admin)
                   <!-- Admin Dropdown -->
-                  <div class="relative">
-                    <button id="admin-menu-button" class="text-white font-bold hover:text-gray-300">
-                        Admin Menu
-                    </button>
-                    <div id="admin-menu-dropdown" class="absolute right-0 mt-2 w-48 bg-white text-black rounded shadow-lg hidden">
-                        <a href="{{ route('admin.dashboard') }}" class="block px-4 py-2 hover:bg-gray-200">Admin Dashboard</a>
-                        <a href="#" class="block px-4 py-2 hover:bg-gray-200"
-                           onclick="event.preventDefault(); document.getElementById('logout-form').submit();">
-                           Logout
-                        </a>
-                    </div>
-                </div>
+<div class="relative">
+  <button id="admin-menu-button" class="text-white font-bold hover:text-gray-300">
+      Admin Menu
+  </button>
+  <div id="admin-menu-dropdown" class="absolute right-0 mt-2 w-48 bg-white text-black rounded shadow-lg hidden">
+      <a href="{{ route('admin.dashboard') }}" class="block px-4 py-2 hover:bg-gray-200">Admin Dashboard</a>
+      <a href="{{ route('favorites.index') }}" class="block px-4 py-2 hover:bg-gray-200">Favorites</a>
+      <a href="{{ route('account.settings') }}" class="block px-4 py-2 hover:bg-gray-200">Account Management</a>
+      <a href="#" class="block px-4 py-2 hover:bg-gray-200"
+         onclick="event.preventDefault(); document.getElementById('logout-form').submit();">
+         Logout
+      </a>
+  </div>
+</div>
               @else
-                  <!-- Logout Link for Non-Admin Users -->
-                  <a href="#" class="text-white font-bold hover:text-gray-300"
-                     onclick="event.preventDefault(); document.getElementById('logout-form').submit();">
-                     Logout
-                  </a>
+                  <!-- Account Dropdown -->
+<div class="relative">
+  <button id="account-menu-button" class="text-white font-bold hover:text-gray-300">
+      Account
+  </button>
+  <div id="account-menu-dropdown" class="absolute right-0 mt-2 w-48 bg-white text-black rounded shadow-lg hidden">
+      <a href="{{ route('favorites.index') }}" class="block px-4 py-2 hover:bg-gray-200">Favorites</a>
+      <a href="{{ route('account.settings') }}" class="block px-4 py-2 hover:bg-gray-200">Account Management</a>
+      <a href="#" class="block px-4 py-2 hover:bg-gray-200"
+         onclick="event.preventDefault(); document.getElementById('logout-form').submit();">
+         Logout
+      </a>
+  </div>
+</div>
               @endif
               <form id="logout-form" action="{{ route('logout') }}" method="POST" class="hidden">
                   @csrf
@@ -76,20 +87,45 @@
     document.addEventListener('DOMContentLoaded', function () {
         const adminMenuButton = document.getElementById('admin-menu-button');
         const adminMenuDropdown = document.getElementById('admin-menu-dropdown');
+        const accountMenuButton = document.getElementById('account-menu-button');
+        const accountMenuDropdown = document.getElementById('account-menu-dropdown');
 
-        adminMenuButton.addEventListener('click', function (event) {
-            event.stopPropagation(); // Prevent the click from propagating to the document
-            adminMenuDropdown.classList.toggle('hidden');
-        });
+        // Admin Dropdown
+        if (adminMenuButton) {
+            adminMenuButton.addEventListener('click', function (event) {
+                event.stopPropagation();
+                adminMenuDropdown.classList.toggle('hidden');
+                if (accountMenuDropdown) accountMenuDropdown.classList.add('hidden'); // Close account dropdown if open
+            });
+        }
 
+        // Account Dropdown
+        if (accountMenuButton) {
+            accountMenuButton.addEventListener('click', function (event) {
+                event.stopPropagation();
+                accountMenuDropdown.classList.toggle('hidden');
+                if (adminMenuDropdown) adminMenuDropdown.classList.add('hidden'); // Close admin dropdown if open
+            });
+        }
+
+        // Close dropdowns when clicking outside
         document.addEventListener('click', function () {
-            // Hide the dropdown if clicking outside of it
-            adminMenuDropdown.classList.add('hidden');
+            if (adminMenuDropdown) adminMenuDropdown.classList.add('hidden');
+            if (accountMenuDropdown) accountMenuDropdown.classList.add('hidden');
         });
 
-        adminMenuDropdown.addEventListener('click', function (event) {
-            event.stopPropagation(); // Prevent the dropdown click from closing itself
-        });
+        // Prevent dropdowns from closing when clicking inside
+        if (adminMenuDropdown) {
+            adminMenuDropdown.addEventListener('click', function (event) {
+                event.stopPropagation();
+            });
+        }
+
+        if (accountMenuDropdown) {
+            accountMenuDropdown.addEventListener('click', function (event) {
+                event.stopPropagation();
+            });
+        }
     });
 </script>
 </body>
