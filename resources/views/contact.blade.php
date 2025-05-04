@@ -1,9 +1,34 @@
 @extends('layouts.app')
 
 @section('content')
+<div class="bg-custom-yellow text-center p-2.5">
+    <h1 class="text-white text-xl font-bold font-custom-rubik">Any question? Contact Us!</h1>
+</div>
 
+<div class="container mx-auto mt-8">
+    @if (session('success'))
+        <div class="bg-green-500 text-white p-4 rounded mb-4">
+            {{ session('success') }}
+        </div>
+    @endif
 
-<div class="bg-custom-yellow text-center p-2.5" >
-    <h1 class="text-white text-xl font-bold font-custom-rubik">Any question ? Contact Us  !</h1>
+    <form action="{{ route('contact.store') }}" method="POST" class="bg-gray-800 p-6 rounded-lg shadow-lg">
+        @csrf
+        <div class="mb-4">
+            <label for="name" class="block text-gray-300">Name</label>
+            <input type="text" name="name" id="name" class="w-full p-2 rounded bg-gray-700 text-white" required>
+        </div>
+        <div class="mb-4">
+            <label for="email" class="block text-gray-300">Email</label>
+            <input type="email" name="email" id="email" class="w-full p-2 rounded bg-gray-700 text-white" required>
+        </div>
+        <div class="mb-4">
+            <label for="message" class="block text-gray-300">Message</label>
+            <textarea name="message" id="message" rows="4" class="w-full p-2 rounded bg-gray-700 text-white" required></textarea>
+        </div>
+        <button type="submit" class="bg-blue-500 text-white px-4 py-2 rounded hover:bg-blue-600">
+            Send Message
+        </button>
+    </form>
 </div>
 @endsection

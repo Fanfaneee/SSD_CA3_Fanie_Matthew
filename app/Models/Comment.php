@@ -8,7 +8,7 @@ class Comment extends Model
 {
     use HasFactory;
 
-    protected $fillable = ['festival_id', 'user_id', 'content'];
+    protected $fillable = ['festival_id', 'content', 'user_id'];
 
     public function festival()
     {
