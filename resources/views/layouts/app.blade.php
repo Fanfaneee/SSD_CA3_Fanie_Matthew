@@ -32,7 +32,7 @@
         <div class="flex space-x-40 pr-40 flex-1 justify-end font-custom-rubik">
           <a href="{{ route('calendar') }}" class="text-white font-bold hover:text-gray-300">Calendar</a>
           <a href="{{ route('contact') }}" class="text-white font-bold hover:text-gray-300">Contact</a>
-          <a href="{{ route('contact') }}" class="text-white font-bold hover:text-gray-300">Register/Login</a>
+          <a href="{{ route('register') }}" class="text-white font-bold hover:text-gray-300">Register/Login</a>
         </div>
       </nav>
     </header>

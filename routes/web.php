@@ -2,6 +2,7 @@
 
 use App\Http\Controllers\PageController;
 use App\Http\Controllers\FestivalController;
+use App\Http\Controllers\Auth\RegisterController;
 
 
 Route::get('/', [PageController::class, 'home'])->name('home');
@@ -19,3 +20,5 @@ Route::get('/festivals/{id}', [FestivalController::class, 'show'])->name('festiv
 
 
 Route::post('/festivals', [FestivalController::class, 'store'])->name('festivals.store');
+Route::get('/register', [RegisterController::class, 'showRegistrationForm'])->name('register');
+Route::post('/register', [RegisterController::class, 'register']);
