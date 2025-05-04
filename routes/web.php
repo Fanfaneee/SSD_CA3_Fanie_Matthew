@@ -8,6 +8,7 @@ use App\Http\Controllers\AdminController;
 use App\Http\Controllers\CommentController; // For non-admin comments
 use App\Http\Controllers\Admin\UserController;
 use App\Http\Controllers\Admin\CommentController as AdminCommentController; // Alias for admin comments
+use App\Http\Controllers\ContactController;
 
 Route::get('/', [PageController::class, 'home'])->name('home');
 
@@ -45,3 +46,6 @@ Route::middleware(['auth', 'admin'])->prefix('admin')->name('admin.')->group(fun
     Route::patch('/comments/{comment}', [AdminCommentController::class, 'update'])->name('comments.update');
     Route::delete('/comments/{comment}', [AdminCommentController::class, 'destroy'])->name('comments.destroy');
 });
+
+Route::post('/contact', [ContactController::class, 'store'])->name('contact.store');
+Route::delete('/admin/contacts/{contact}', [AdminController::class, 'destroyContact'])->name('admin.contacts.destroy');
