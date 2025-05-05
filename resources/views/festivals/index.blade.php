@@ -16,6 +16,47 @@
         @endif
     </div>
 
+    <div class="container mx-auto mt-4">
+        <!-- Search, Filter, and Sort Form -->
+        <form method="GET" action="{{ route('festivals.index') }}" class="flex flex-wrap items-center justify-between mb-4 bg-custom-background-dark p-4 rounded-lg">
+            <!-- Search -->
+            <div class="flex items-center space-x-2">
+                <input type="text" name="search" value="{{ request('search') }}" placeholder="Search festivals..." class="p-2 rounded bg-gray-700 text-white">
+                <button type="submit" class="bg-blue-500 text-white px-4 py-2 rounded hover:bg-blue-600">Search</button>
+            </div>
+    
+            <!-- Filter by Genre -->
+            <div class="flex items-center space-x-2">
+                <select name="genre" class="p-2 rounded bg-gray-700 text-white">
+                    <option value="">All Genres</option>
+                    @foreach ($genres as $genre)
+                        <option value="{{ $genre }}" {{ request('genre') == $genre ? 'selected' : '' }}>{{ $genre }}</option>
+                    @endforeach
+                </select>
+                <button type="submit" class="bg-green-500 text-white px-4 py-2 rounded hover:bg-green-600">Filter</button>
+            </div>
+    
+            <!-- Sorting -->
+            <div class="flex items-center space-x-2">
+                <select name="sort" class="p-2 rounded bg-gray-700 text-white">
+                    <option value="">Sort By</option>
+                    <option value="name" {{ request('sort') == 'name' ? 'selected' : '' }}>Name</option>
+                    <option value="location" {{ request('sort') == 'location' ? 'selected' : '' }}>Location</option>
+                    <option value="genre" {{ request('sort') == 'genre' ? 'selected' : '' }}>Genre</option>
+                </select>
+                <select name="direction" class="p-2 rounded bg-gray-700 text-white">
+                    <option value="asc" {{ request('direction') == 'asc' ? 'selected' : '' }}>Ascending</option>
+                    <option value="desc" {{ request('direction') == 'desc' ? 'selected' : '' }}>Descending</option>
+                </select>
+                <button type="submit" class="bg-yellow-500 text-white px-4 py-2 rounded hover:bg-yellow-600">Sort</button>
+            </div>
+        </form>
+    
+        <div class="mt-8">
+            {{ $festivals->links() }}
+        </div>
+    </div>
+
     <div class="grid grid-cols-3 gap-6 pt-8">
         @foreach ($festivals as $festival)
             <div class="rounded-lg overflow-hidden shadow-lg bg-custom-background-dark">
@@ -80,5 +121,4 @@
         @endforeach
     </div>
 </div>
-
 @endsection

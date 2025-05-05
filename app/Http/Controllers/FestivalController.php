@@ -8,11 +8,35 @@ use Illuminate\Http\Request;
 class FestivalController extends Controller
 {
     // Afficher tous les festivals
-    public function index()
-    {
-        $festivals = Festival::all();
-        return view('festivals.index', compact('festivals'));
+    public function index(Request $request)
+{
+    $query = Festival::query();
+
+    // Search
+    if ($request->has('search') && $request->search) {
+        $query->where('name', 'like', '%' . $request->search . '%')
+              ->orWhere('location', 'like', '%' . $request->search . '%')
+              ->orWhere('genre', 'like', '%' . $request->search . '%');
     }
+
+    // Filter by genre
+    if ($request->has('genre') && $request->genre) {
+        $query->where('genre', $request->genre);
+    }
+
+    // Sorting
+    if ($request->has('sort') && $request->sort) {
+        $query->orderBy($request->sort, $request->get('direction', 'asc'));
+    }
+
+    // Paginate results
+    $festivals = $query->paginate(9);
+
+    // Get distinct genres for filtering
+    $genres = Festival::select('genre')->distinct()->pluck('genre');
+
+    return view('festivals.index', compact('festivals', 'genres'));
+}
 
     // Afficher un festival spécifique
     public function show($id)
