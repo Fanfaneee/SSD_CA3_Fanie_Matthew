@@ -16,6 +16,7 @@ module.exports = {
         'custom-pink': '#FF006E',
         'custom-pink-dark': '#D5006D',
         'custom-orange': '#FB5607',
+        'custom-orange-dark': '#D95110',
         'custom-yellow': '#FFBE0B',
         'custom-yellow-dark': '#DBA716',
         'custom-background': '#17181C',

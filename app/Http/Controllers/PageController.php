@@ -26,7 +26,7 @@ class PageController extends Controller
 
     public function calendar()
 {
-    $festivals = Festival::select('name', 'start_date', 'end_date', 'location', 'genre', 'lineup', 'price')->get();
+    $festivals = Festival::select('id', 'name', 'start_date', 'end_date', 'location', 'genre', 'lineup', 'price')->get();
     return view('calendar', compact('festivals'));
 }
     public function contact()
