@@ -1,60 +1,86 @@
 @extends('layouts.app')
 
 @section('content')
-<div class="container">
-    <div class="row justify-content-center">
-        <div class="col-md-8">
-            <div class="card bg-dark text-white"> <!-- Ajout de bg-dark et text-white -->
-                <div class="card-header text-white">{{ __('Login') }}</div>
 
-                <div class="card-body">
-                    <form method="POST" action="{{ route('login') }}">
-                        @csrf
 
-                        <div class="mb-3">
-                            <label for="email" class="form-label text-white">{{ __('Email Address') }}</label>
-                            <input id="email" type="email" class="form-control text-black @error('email') is-invalid @enderror" name="email" value="{{ old('email') }}" required autocomplete="email" autofocus>
-                            @error('email')
-                                <span class="invalid-feedback text-white" role="alert">
-                                    <strong>{{ $message }}</strong>
-                                </span>
-                            @enderror
-                        </div>
+<main class="sm:container sm:mx-auto sm:max-w-lg sm:mt-10">
+    <div class="flex">
+        <div class="w-full">
+            <section class="flex flex-col break-words bg-custom-background-dark sm:border-1 sm:rounded-md sm:shadow-sm sm:shadow-lg">
 
-                        <div class="mb-3">
-                            <label for="password" class="form-label text-white">{{ __('Password') }}</label>
-                            <input id="password" type="password" class="form-control text-black @error('password') is-invalid @enderror" name="password" required autocomplete="current-password">
-                            @error('password')
-                                <span class="invalid-feedback text-white" role="alert">
-                                    <strong>{{ $message }}</strong>
-                                </span>
-                            @enderror
-                        </div>
+                <header class="font-semibold bg-custom-blue text-white py-5 px-6 sm:py-6 sm:px-8 sm:rounded-t-md">
+                    {{ __('Login') }}
+                </header>
 
-                        <div class="mb-3 form-check">
-                            <input type="checkbox" class="form-check-input" id="remember" name="remember" {{ old('remember') ? 'checked' : '' }}>
-                            <label class="form-check-label text-white" for="remember">{{ __('Remember Me') }}</label>
-                        </div>
+                <form class="w-full px-6 space-y-6 sm:px-10 sm:space-y-8" method="POST" action="{{ route('login') }}">
+                    @csrf
 
-                        <div class="mb-0">
-                            <button type="submit" class="btn btn-primary">
-                                {{ __('Login') }}
-                            </button>
-                        </div>
-                    </form>
+                    <div class="flex flex-wrap">
+                        <label for="email" class="block text-white text-sm font-bold mb-2 sm:mb-4">
+                            {{ __('E-Mail Address') }}:
+                        </label>
 
-                    <!-- Link to Register Page -->
-                    <div class="mt-3">
-                        <p class="text-center text-white">
+                        <input id="email" type="email"
+                            class="form-input border-custom-purple-2 w-full h-12 p-2 text-lg @error('email') border-red-500 @enderror" name="email"
+                            value="{{ old('email') }}" required autocomplete="email" autofocus>
+
+                        @error('email')
+                        <p class="text-red-500 text-xs italic mt-4">
+                            {{ $message }}
+                        </p>
+                        @enderror
+                    </div>
+
+                    <div class="flex flex-wrap">
+                        <label for="password" class="block text-white text-sm font-bold mb-2 sm:mb-4">
+                            {{ __('Password') }}:
+                        </label>
+
+                        <input id="password" type="password"
+                            class="form-input border-custom-purple-2 w-full h-12 p-2 text-lg @error('password') border-red-500 @enderror" name="password"
+                            required>
+
+                        @error('password')
+                        <p class="text-red-500 text-xs italic mt-4">
+                            {{ $message }}
+                        </p>
+                        @enderror
+                    </div>
+
+                    <div class="flex items-center">
+                        <label class="inline-flex items-center text-sm text-white" for="remember">
+                            <input type="checkbox" name="remember" id="remember" class="form-checkbox text-custom-purple-2 border-custom-purple-2 focus:ring-custom-purple-2"
+                                {{ old('remember') ? 'checked' : '' }}>
+                            <span class="ml-2">{{ __('Remember Me') }}</span>
+                        </label>
+
+                        @if (Route::has('password.request'))
+                        <a class="text-sm text-custom-purple-2 no-underline hover:underline whitespace-no-wrap hover:text-custom-purple-3 ml-auto"
+                            href="{{ route('password.request') }}">
+                            {{ __('Forgot Your Password?') }}
+                        </a>
+                        @endif
+                    </div>
+
+                    <div class="flex flex-wrap">
+                        <button type="submit"
+                        class="w-full select-none font-bold whitespace-no-wrap p-3 rounded-lg text-base leading-normal no-underline text-white bg-custom-blue hover:bg-custom-purple-3 sm:py-4">
+                            {{ __('Login') }}
+                        </button>
+
+                        @if (Route::has('register'))
+                        <p class="w-full text-xs text-center text-white my-6 sm:text-sm sm:my-8">
                             {{ __("Don't have an account?") }}
-                            <a href="{{ route('register') }}" class="text-primary font-weight-bold">
-                                {{ __('Register here') }}
+                            <a class="text-custom-blue no-underline hover:underline hover:text-custom-purple-3" href="{{ route('register') }}">
+                                {{ __('Register') }}
                             </a>
                         </p>
+                        @endif
                     </div>
-                </div>
-            </div>
+                </form>
+
+            </section>
         </div>
     </div>
-</div>
+</main>
 @endsection
