@@ -22,7 +22,7 @@
             <!-- Search -->
             <div class="flex items-center space-x-2">
                 <input type="text" name="search" value="{{ request('search') }}" placeholder="Search festivals..." class="p-2 rounded bg-gray-700 text-white">
-                <button type="submit" class="bg-blue-500 text-white px-4 py-2 rounded hover:bg-blue-600">Search</button>
+                <button type="submit" class="bg-custom-blue text-white px-4 py-2 rounded hover:bg-custom-blue-dark">Search</button>
             </div>
     
             <!-- Filter by Genre -->
@@ -33,7 +33,7 @@
                         <option value="{{ $genre }}" {{ request('genre') == $genre ? 'selected' : '' }}>{{ $genre }}</option>
                     @endforeach
                 </select>
-                <button type="submit" class="bg-green-500 text-white px-4 py-2 rounded hover:bg-green-600">Filter</button>
+                <button type="submit" class="bg-custom-pink text-white px-4 py-2 rounded hover:bg-cutom-pink-dark">Filter</button>
             </div>
     
             <!-- Sorting -->
@@ -48,7 +48,7 @@
                     <option value="asc" {{ request('direction') == 'asc' ? 'selected' : '' }}>Ascending</option>
                     <option value="desc" {{ request('direction') == 'desc' ? 'selected' : '' }}>Descending</option>
                 </select>
-                <button type="submit" class="bg-yellow-500 text-white px-4 py-2 rounded hover:bg-yellow-600">Sort</button>
+                <button type="submit" class="bg-custom-yellow text-white px-4 py-2 rounded hover:bg-custom-yellow-dark">Sort</button>
             </div>
         </form>
     
