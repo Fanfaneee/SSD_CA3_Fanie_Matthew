@@ -1,8 +1,9 @@
-## Sounds of Éire - Matthew Tomkins/Fanie Bugenne
-```
+## Sounds of Éire 
 
+### ✍️ Authors
 
-```
+Fanie Bugenne
+Matthew Tomkins
 
 ## Requirements
 •	PHP 7.3 or higher <br>
@@ -36,7 +37,7 @@ Setup your database credentials in the .env file <br>
 DB_CONNECTION=mysql
 DB_HOST=127.0.0.1
 DB_PORT=3306
-DB_DATABASE=laravelblog
+DB_DATABASE=ssd_ca3_fanie_matthew
 DB_USERNAME=root
 DB_PASSWORD=
 ```
