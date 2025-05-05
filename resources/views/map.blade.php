@@ -7,15 +7,14 @@
 </div>
 
 <!-- Conteneur principal -->
-<div class="flex justify-center items-center h-screen">
+<div class="container mx-auto mt-8">
     <!-- Carte -->
-    <div id="map" class="w-2/3 h-2/3 border-4 border-gray-700 rounded-lg shadow-lg"></div>
+    <div id="map" class="w-full h-[600px] border-4 border-gray-700 rounded-lg shadow-lg"></div>
 
     <!-- Conteneur pour les informations du festival -->
-    <div id="festival-info" class="w-1/3 h-2/3 bg-gray-800 text-white p-4 overflow-y-auto hidden">
+    <div id="festival-info" class="mt-8 p-4 bg-custom-background-dark text-white rounded-lg shadow hidden">
         <h2 class="text-xl font-bold mb-4">Festival Details</h2>
         <div id="festival-details">
-            <!-- Les informations du festival seront insérées ici -->
             <p class="text-gray-400">Click on a marker to see festival details.</p>
         </div>
     </div>
@@ -48,42 +47,48 @@
     map.fitBounds(bounds);
 
     // Ajouter les marqueurs pour chaque festival
-var festivals = @json($festivals); // Récupérer les festivals depuis le contrôleur
-festivals.forEach(function(festival) {
-    if (festival.latitude && festival.longitude) {
-        var marker = L.marker([festival.latitude, festival.longitude]).addTo(map);
+    var festivals = @json($festivals); // Récupérer les festivals depuis le contrôleur
+    festivals.forEach(function(festival) {
+        if (festival.latitude && festival.longitude) {
+            var marker = L.marker([festival.latitude, festival.longitude]).addTo(map);
 
-        // Ajouter un événement de clic sur le marqueur
-        marker.on('click', function() {
-            // Afficher les informations du festival dans le conteneur
-            var infoContainer = document.getElementById('festival-info');
-            var detailsContainer = document.getElementById('festival-details');
+            // Ajouter un événement de clic sur le marqueur
+            marker.on('click', function() {
+                // Afficher les informations du festival dans le conteneur
+                var infoContainer = document.getElementById('festival-info');
+                var detailsContainer = document.getElementById('festival-details');
+                var festivalTitle = document.querySelector('#festival-info h2');
 
-            // Reformater les dates
-            const formatDate = (dateString) => {
-                const options = { year: 'numeric', month: 'long', day: 'numeric' };
-                return new Date(dateString).toLocaleDateString('en-US', options);
-            };
+                // Reformater les dates
+                const formatDate = (dateString) => {
+                    const options = { year: 'numeric', month: 'long', day: 'numeric' };
+                    return new Date(dateString).toLocaleDateString('en-US', options);
+                };
 
-            const startDate = festival.start_date ? formatDate(festival.start_date) : 'Unknown';
-            const endDate = festival.end_date ? formatDate(festival.end_date) : 'Unknown';
+                const startDate = festival.start_date ? formatDate(festival.start_date) : 'Unknown';
+                const endDate = festival.end_date ? formatDate(festival.end_date) : 'Unknown';
 
-            // Insérer les informations du festival
-            detailsContainer.innerHTML = `
-                <h3 class="text-lg font-bold">${festival.name}</h3>
-                <p><strong>Location:</strong> ${festival.location}</p>
-                <p><strong>Genre:</strong> ${festival.genre}</p>
-                <p><strong>Lineup:</strong> ${festival.lineup}</p>
-                <p><strong>Price:</strong> ${festival.price ? '$' + festival.price : 'Free'}</p>
-                <p><strong>Start Date:</strong> ${startDate}</p>
-                <p><strong>End Date:</strong> ${endDate}</p>
-            `;
+                // Mettre à jour le titre avec un lien vers la page du festival
+                festivalTitle.innerHTML = `<a href="/festivals/${festival.id}" class="text-custom-pink no-underline hover:text-custom-pink-dark">${festival.name}</a>`;
 
-            // Afficher le conteneur d'informations
-            infoContainer.classList.remove('hidden');
-        });
-    }
-});
+                // Insérer les informations du festival
+                detailsContainer.innerHTML = `
+                    <p><strong>Location:</strong> ${festival.location}</p>
+                    <p><strong>Genre:</strong> ${festival.genre}</p>
+                    <p><strong>Lineup:</strong> ${festival.lineup}</p>
+                    <p><strong>Price:</strong> ${festival.price ? '$' + festival.price : 'Free'}</p>
+                    <p><strong>Start Date:</strong> ${startDate}</p>
+                    <p><strong>End Date:</strong> ${endDate}</p>
+                `;
+
+                // Afficher le conteneur d'informations
+                infoContainer.classList.remove('hidden');
+
+                // Faire défiler jusqu'à la section des détails
+                infoContainer.scrollIntoView({ behavior: 'smooth' });
+            });
+        }
+    });
 </script>
 
 @endsection

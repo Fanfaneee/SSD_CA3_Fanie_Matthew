@@ -19,10 +19,10 @@ class PageController extends Controller
     }
 
     public function map()
-{
-    $festivals = Festival::select('name', 'location', 'latitude', 'longitude', 'genre', 'lineup', 'price', 'start_date', 'end_date')->get();
-    return view('map', compact('festivals'));
-}
+    {
+        $festivals = Festival::select('id', 'name', 'location', 'latitude', 'longitude', 'genre', 'lineup', 'price', 'start_date', 'end_date')->get();
+        return view('map', compact('festivals'));
+    }
 
     public function calendar()
 {

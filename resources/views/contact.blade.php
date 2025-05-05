@@ -12,7 +12,7 @@
         </div>
     @endif
 
-    <form action="{{ route('contact.store') }}" method="POST" class="bg-gray-800 p-6 rounded-lg shadow-lg">
+    <form action="{{ route('contact.store') }}" method="POST" class="bg-custom-background-dark p-6 rounded-lg shadow-lg">
         @csrf
         <div class="mb-4">
             <label for="name" class="block text-gray-300">Name</label>

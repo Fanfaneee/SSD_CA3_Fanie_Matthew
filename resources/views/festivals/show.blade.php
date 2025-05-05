@@ -5,7 +5,7 @@
     <h1 class="text-white text-xl font-bold font-custom-rubik">Find out your favorite festivals in our list!</h1>
 </div>
 <div class="container mx-auto mt-8">
-    <div class="bg-gray-800 rounded-lg shadow-lg overflow-hidden">
+    <div class="bg-custom-background-dark rounded-lg shadow-lg overflow-hidden">
         <!-- Festival Details -->
         <img src="{{ asset('storage/' . $festival->image) }}" alt="{{ $festival->name }}" class="w-full h-96 object-cover">
         <div class="p-6">
@@ -16,14 +16,14 @@
             <p class="text-gray-300 mb-2"><strong>Start Date:</strong> {{ $festival->start_date->format('F j, Y') }}</p>
             <p class="text-gray-300 mb-2"><strong>End Date:</strong> {{ $festival->end_date->format('F j, Y') }}</p>
             <p class="text-gray-300 mb-4"><strong>Price:</strong> {{ $festival->price ? '$' . number_format($festival->price, 2) : 'Free' }}</p>
-            <a href="{{ route('festivals.index') }}" class="bg-blue-500 text-white px-4 py-2 rounded hover:bg-blue-600">
+            <a href="{{ route('festivals.index') }}" class="bg-custom-purple text-white px-4 py-2 rounded hover:bg-custom-purple-dark">
                 Back to Festivals
             </a>
         </div>
     </div>
 
     <!-- Comments Section -->
-    <div class="bg-gray-800 rounded-lg shadow-lg overflow-hidden mt-8 p-6">
+    <div class="bg-custom-background-dark rounded-lg shadow-lg overflow-hidden mt-8 p-6">
       <!-- Display Comments -->
 @forelse ($comments as $comment)
 <div class="mb-4">
@@ -70,7 +70,7 @@
                 @csrf
                 <input type="hidden" name="festival_id" value="{{ $festival->id }}">
                 <textarea name="content" rows="3" class="w-full p-2 rounded bg-gray-700 text-white" placeholder="Write your comment here..." required></textarea>
-                <button type="submit" class="bg-blue-500 text-white px-4 py-2 rounded hover:bg-blue-600 mt-2">
+                <button type="submit" class="bg-custom-purple text-white px-4 py-2 rounded hover:bg-custom-purple-dark mt-2">
                     Submit Comment
                 </button>
             </form>
