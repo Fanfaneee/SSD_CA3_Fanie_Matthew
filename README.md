@@ -28,7 +28,7 @@ npm run dev
 Create a database <br>
 ```
 mysql
-create database laravelblog;
+create database ssd_ca3_fanie_matthew;
 exit;
 ```
 
