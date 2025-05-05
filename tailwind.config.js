@@ -17,6 +17,7 @@ module.exports = {
         'custom-pink-dark': '#D5006D',
         'custom-orange': '#FB5607',
         'custom-yellow': '#FFBE0B',
+        'custom-yellow-dark': '#DBA716',
         'custom-background': '#17181C',
         'custom-background-dark': '#090B15',
       },

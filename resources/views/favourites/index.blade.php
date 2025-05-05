@@ -6,10 +6,10 @@
     <h1 class="text-white text-xl font-bold font-custom-rubik">Your favourite festivals !</h1>
 </div>
 <div class="container mx-auto mt-8">
-    <h1 class="text-2xl font-bold mb-4">My Favorite Festivals</h1>
+    
 
     @if ($favorites->isEmpty())
-        <p class="text-gray-300">You have no favorite festivals yet.</p>
+        <p class="text-center text-gray-300">You have no favorite festivals yet.</p>
     @else
         <div class="grid grid-cols-3 gap-6">
             @foreach ($favorites as $festival)

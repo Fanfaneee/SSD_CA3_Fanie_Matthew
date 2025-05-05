@@ -12,6 +12,11 @@
         </div>
     @endif
 
+    <!-- Texte ajouté au-dessus du formulaire -->
+    <p class="text-gray-300 text-center mb-6">
+        You want to add a festival to our list? You want to have more information about a festival or share your feedback? Fill out the form below and we will get back to you as soon as possible!
+    </p>
+
     <form action="{{ route('contact.store') }}" method="POST" class="bg-custom-background-dark p-6 rounded-lg shadow-lg">
         @csrf
         <div class="mb-4">
@@ -26,7 +31,7 @@
             <label for="message" class="block text-gray-300">Message</label>
             <textarea name="message" id="message" rows="4" class="w-full p-2 rounded bg-gray-700 text-white" required></textarea>
         </div>
-        <button type="submit" class="bg-blue-500 text-white px-4 py-2 rounded hover:bg-blue-600">
+        <button type="submit" class="bg-custom-yellow text-white px-4 py-2 rounded hover:bg-custom-yellow-dark">
             Send Message
         </button>
     </form>
