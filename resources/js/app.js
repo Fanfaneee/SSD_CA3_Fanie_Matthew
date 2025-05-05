@@ -64,10 +64,10 @@ document.addEventListener('DOMContentLoaded', function () {
             const dateString = `${year}-${String(month + 1).padStart(2, '0')}-${String(day).padStart(2, '0')}`;
             let festivalCount = 0; // Compteur pour gérer les lignes multiples
             festivals.forEach((festival, index) => {
-                const startDate = new Date(festival.start_date);
-                const endDate = new Date(festival.end_date);
+                const startDate = new Date(festival.start_date).toISOString().split('T')[0]; // Format yyyy-mm-dd
+                const endDate = new Date(festival.end_date).toISOString().split('T')[0]; // Format yyyy-mm-dd
 
-                if (new Date(dateString) >= startDate && new Date(dateString) <= endDate) {
+                if (dateString >= startDate && dateString <= endDate) {
                     // Créer une ligne colorée pour le festival
                     const festivalLine = document.createElement('div');
                     festivalLine.textContent = festival.name;
@@ -79,14 +79,14 @@ document.addEventListener('DOMContentLoaded', function () {
 
                     // Ajouter un gestionnaire de clic pour afficher les infos du festival
                     festivalLine.addEventListener('click', () => {
-                        // Mettre à jour le titre avec le nom du festival
+                        // Mettre à jour le titre avec le nom du festival comme lien cliquable
                         const festivalTitle = document.querySelector('#festival-info h2');
-                        festivalTitle.textContent = festival.name;
+                        festivalTitle.innerHTML = `<a href="/festivals/${festival.id}" class="text-custom-pink no-underline hover:text-custom-pink-dark">${festival.name}</a>`;
 
                         // Mettre à jour les détails du festival
                         festivalDetails.innerHTML = `
-                            <p><strong>Start Date:</strong> ${festival.start_date}</p>
-                            <p><strong>End Date:</strong> ${festival.end_date}</p>
+                            <p><strong>Start Date:</strong> ${startDate}</p>
+                            <p><strong>End Date:</strong> ${endDate}</p>
                             <p><strong>Location:</strong> ${festival.location || 'Unknown'}</p>
                             <p><strong>Genre:</strong> ${festival.genre || 'Unknown'}</p>
                             <p><strong>Lineup:</strong> ${festival.lineup || 'Unknown'}</p>
