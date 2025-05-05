@@ -1,3 +1,5 @@
+![image](https://github.com/user-attachments/assets/ab3f0e33-a457-4c45-8bf3-9b0ee34adb6f)
+
 ## Sounds of Éire 
 
 ### ✍️ Authors
