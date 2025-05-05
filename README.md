@@ -2,14 +2,14 @@
 
 ### ✍️ Authors
 
-Fanie Bugenne
+Fanie Bugenne<br>
 Matthew Tomkins
 
 ## Requirements
 •	PHP 7.3 or higher <br>
 •	Node 18.20.6 or higher <br>
 
-## Usage <br>
+## 🚀 Usage <br>
 To run the program locally <br>
 ```
 git clone https://github.com/Fanfaneee/SSD_CA3_Fanie_Matthew.git
@@ -24,7 +24,7 @@ php artisan serve
 npm run dev
 ```
 
-## Before starting <br>
+## ℹ️ Before Starting <br>
 Create a database <br>
 ```
 mysql
