@@ -1,10 +1,39 @@
 ![image](https://github.com/user-attachments/assets/ab3f0e33-a457-4c45-8bf3-9b0ee34adb6f)
 
 ## Sounds of Éire 
+Welcome to the Sound of Éire website! This is a Laravel-based web application for managing festivals, user accounts, and more. The platform allows users to explore festivals, manage their accounts, and interact with features like favorites and comments.
+
 ### ✍️ Authors
 
 Fanie Bugenne<br>
 Matthew Tomkins
+
+## Features
+
+- **Festival Management**:
+  - View a list of festivals with search, filter, and sort functionality.
+  - Admins can create, edit, and delete festivals.
+  
+- **User Account Management**:
+  - Update user profile information (name, email, and password).
+  - Manage user-specific settings.
+
+- **Favorites**:
+  - Users can add or remove festivals from their favorites list.
+
+- **Comments**:
+  - Users can leave comments on festivals.
+
+- **Map**:
+  - Users can find festivals on the map.
+ 
+- **Calender**:
+  - Users can find the festivals dates and information on the calender.
+
+- **Admin Features**:
+  - Admins have access to additional controls, such as managing festivals and viewing user data.
+
+---
 
 ### Home Page
 ![image](https://github.com/user-attachments/assets/1acc7cd9-31e2-429d-bf45-c1546b6b1514)
@@ -26,6 +55,14 @@ Matthew Tomkins
 ## Requirements
 •	PHP 7.3 or higher <br>
 •	Node 18.20.6 or higher <br>
+
+## Technologies Used
+
+- **Backend**: Laravel 10
+- **Frontend**: Blade templates, Tailwind CSS
+- **Database**: MySQL
+- **Asset Bundling**: Vite
+- **Hosting**: Azure App Service
 
 ## 🚀 Usage <br>
 To run the program locally <br>
