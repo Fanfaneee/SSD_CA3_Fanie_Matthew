@@ -2,8 +2,8 @@
 
 @section('content')
 <div class="container mx-auto max-w-[85%] px-4 text-white">
-    <h1 class="text-2xl font-bold mb-4">Welcome to the Admin Dashboard</h1>
-    <p class="mb-6">You are logged in as an admin.</p>
+    <h1 class="text-2xl font-bold mt-4 mb-4">Welcome to the Admin Dashboard</h1>
+    
 
     <!-- Users Table -->
     <div class="mt-6">
@@ -106,7 +106,7 @@
     </div>
 
     <!-- Comments Table -->
-    <div class="mt-12">
+    <div class="mt-12 mb-12 ">
         <h2 class="text-xl font-bold mb-4 cursor-pointer text-center" onclick="toggleTable('comments-table')">All Comments</h2>
         <div id="comments-table" class="overflow-x-auto">
             <table class="table-auto w-full text-left bg-gray-800 text-white rounded-lg">
