@@ -1,4 +1,5 @@
 @extends('layouts.app')
+@section('title', 'Contact Us')
 
 @section('content')
 <div class="bg-custom-yellow text-center p-2.5">

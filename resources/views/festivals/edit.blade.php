@@ -1,4 +1,5 @@
 @extends('layouts.app')
+@section('title', 'Festival Edition')
 
 @section('content')
 <div class="container mx-auto mt-8">

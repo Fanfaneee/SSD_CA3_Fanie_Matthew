@@ -1,5 +1,5 @@
 @extends('layouts.app')
-
+@section('title', 'Festival Map')
 @section('content')
 
 <div class="bg-custom-pink text-center p-2.5">

@@ -1,5 +1,5 @@
 @extends('layouts.app')
-
+@section('title', content: 'Festival Calendar')
 @section('content')
 
 <div class="bg-custom-orange text-center p-2.5">
