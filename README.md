@@ -23,6 +23,7 @@ composer install
 php artisan cache:clear 
 php artisan config:clear
 php artisan serve
+php artisan storage:link
 npm run dev
 ```
 
