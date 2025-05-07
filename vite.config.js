@@ -8,4 +8,12 @@ export default defineConfig({
             refresh: true,
         }),
     ],
+    server: {
+        https: true, // Enable HTTPS for the development server
+        host: '0.0.0.0', // Allow external access (useful for Azure)
+        port: 5173, // Default Vite port
+    },
+    build: {
+        manifest: true, // Ensure the manifest is generated for Laravel
+    },
 });
