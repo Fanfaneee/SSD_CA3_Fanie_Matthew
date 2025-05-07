@@ -2,7 +2,7 @@
 
 @section('content')
 <div class="container mx-auto mt-8">
-    <h1 class="text-2xl font-bold mb-4">Account Management</h1>
+    <h1 class="text-2xl text-white font-bold mb-4">Account Management</h1>
 
     @if (session('success'))
         <div class="bg-green-500 text-white p-4 rounded mb-4">
